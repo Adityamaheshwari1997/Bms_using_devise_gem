@@ -1,6 +1,5 @@
 <%= form_for @user, url: users_update_path(user_id: current_user.id) do |f| %>
 	<div>
-		<%= f.hidden_field :theater_id, value: @theater.id %>
 		<%= f.hidden_field :movie_id, value: @movie.id %>
 		<%= f.submit "Book Your Ticket" %>
 	</div>
