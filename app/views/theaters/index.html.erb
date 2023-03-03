@@ -1,0 +1,19 @@
+<% if user_signed_in? %> 
+
+ <div> Welcome <%= current_user.email %> </div> 
+
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+
+
+<h1>Select Theater</h1>
+<ol>
+<% @theaters.each do|theater| %>
+	<li>
+	<%= link_to theater.name,theater_path(theater) %>
+	</li>
+<%end%>
+</ol>
+

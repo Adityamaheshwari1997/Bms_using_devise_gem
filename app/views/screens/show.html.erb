@@ -1,0 +1,16 @@
+<% if user_signed_in? %> 
+ <div> Welcome <%= current_user.email %> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+
+<h1>Currently play</h1>
+<h3>Movie : <%= @screen.movie.name %></h3>
+
+
+<%= link_to "Continue",users_edit_path(user_id: current_user.id, theater_id: @theater.id, movie_id:@screen.movie.id)%>
+
+
+
+
