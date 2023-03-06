@@ -10,4 +10,5 @@ class User < ApplicationRecord
   validates :FirstName , :LastName , presence: true , format: {with: /\A[a-zA-Z]+\z/ , message: "Only letters allowed"} 
   validates :Username , presence: true , uniqueness: true
 
+
 end

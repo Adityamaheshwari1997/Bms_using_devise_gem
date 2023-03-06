@@ -1,5 +1,6 @@
 
 class UsersController < ApplicationController
+
   def index
   end
 
@@ -9,11 +10,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    
     @user = User.find(params[:user_id])
-    if @user.update(cus_params)
-      flash[:notice] = "Booking Done!! Mr/Mrs #{@user.email}"
-      redirect_to theaters_index_path
+    if @user.ticketdate == nil || @user.ticketdate.to_date < DateTime.now.to_date
+      if @user.update(cus_params)
+        @user.update(ticketdate: DateTime.now)
+        flash[:notice] = "Booking Done!! Mr/Mrs #{@user.email}"
+        redirect_to theaters_index_path
+      end
+    else
+    flash[:alert] = "your booking already done!! Mr/Mrs #{@user.email}"
+    redirect_to theaters_index_path
     end
   end
 
